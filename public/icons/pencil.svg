@@ -1,0 +1,14 @@
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<mask id="mask-pencil" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="3" y="3" width="17" height="19">
+<g transform="translate(3.57545, 3.1614000000000004)">
+<g id="Mask">
+<path id="Mask_2" d="M0.292893 13.1417C0.105357 13.3292 0 13.5836 0 13.8488V17.6772H4.24264L13.435 8.48483L9.19239 4.24219L0.292893 13.1417Z" fill="black"/>
+<path id="Mask_3" opacity="0.4" fill-rule="evenodd" clip-rule="evenodd" d="M14 17.6772C14 16.5727 13.1046 15.6772 12 15.6772H6.24261L4.24264 17.6772L14 17.6772Z" fill="black"/>
+<path id="Mask_4" opacity="0.7" d="M13.4349 0L10.6064 2.82843L14.8491 7.07107L16.2633 5.65685C17.0443 4.87581 17.0443 3.60948 16.2633 2.82843L13.4349 0Z" fill="black"/>
+</g>
+</g>
+</mask>
+<g mask="url(#mask-pencil)">
+<rect width="24" height="24" fill="black"/>
+</g>
+</svg>

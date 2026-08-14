@@ -1,0 +1,20 @@
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<mask id="mask-briefcase" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="2" y="2" width="20" height="19">
+<g transform="translate(2.0, 2.75)">
+<g id="Mask">
+<path id="Mask_2" fill-rule="evenodd" clip-rule="evenodd" d="M5.5 2C5.5 0.895431 6.39543 0 7.5 0H8H12H12.5C13.6046 0 14.5 0.895431 14.5 2V3.5H14C13.0681 3.5 12.285 2.86261 12.063 2H7.93699C7.71497 2.86261 6.93192 3.5 6 3.5H5.5V2Z" fill="black"/>
+<path id="Mask_3" fill-rule="evenodd" clip-rule="evenodd" d="M20 9H0V18.5H16C18.2091 18.5 20 16.7091 20 14.5V9ZM9.5 10.5C8.39543 10.5 7.5 11.3954 7.5 12.5V13H10.5C11.6046 13 12.5 12.1046 12.5 11V10.5H9.5Z" fill="url(#paint-briefcase)"/>
+<path id="Mask_4" d="M0 8.5C0 6.29086 1.79086 4.5 4 4.5H20V9H0V8.5Z" fill="black"/>
+</g>
+</g>
+</mask>
+<g mask="url(#mask-briefcase)">
+<rect width="24" height="24" fill="black"/>
+</g>
+<defs>
+<linearGradient id="paint-briefcase" x1="19" y1="18.975" x2="0.974467" y2="8.20583" gradientUnits="userSpaceOnUse">
+<stop stop-opacity="0.8"/>
+<stop offset="1" stop-opacity="0.4"/>
+</linearGradient>
+</defs>
+</svg>

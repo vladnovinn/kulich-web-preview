@@ -1,0 +1,45 @@
+<svg width="24" height="24" viewBox="140 190 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="tui-ic-medium / two-coins">
+<mask id="mask5_0_1" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="141" y="191" width="22" height="22">
+<g id="Mask_20">
+<path id="Mask_21" opacity="0.85" fill-rule="evenodd" clip-rule="evenodd" d="M146.5 199.25C146.5 194.694 150.194 191 154.75 191C159.306 191 163 194.694 163 199.25C163 203.806 159.306 207.5 154.75 207.5C150.194 207.5 146.5 203.806 146.5 199.25ZM154.75 203.604C157.155 203.604 159.104 201.655 159.104 199.25C159.104 196.845 157.155 194.896 154.75 194.896C152.345 194.896 150.396 196.845 150.396 199.25C150.396 201.655 152.345 203.604 154.75 203.604Z" fill="black"/>
+<path id="Mask_22" opacity="0.35" d="M159.104 199.25C159.104 201.655 157.155 203.604 154.75 203.604C152.345 203.604 150.396 201.655 150.396 199.25C150.396 196.845 152.345 194.896 154.75 194.896C157.155 194.896 159.104 196.845 159.104 199.25Z" fill="black"/>
+<path id="Mask_23" opacity="0.68" d="M146.853 196.853C143.466 197.88 141 201.027 141 204.75C141 209.306 144.694 213 149.25 213C152.973 213 156.12 210.534 157.147 207.146C156.388 207.376 155.583 207.5 154.75 207.5C154.079 207.5 153.427 207.42 152.802 207.269C152.013 208.379 150.716 209.104 149.25 209.104C146.845 209.104 144.896 207.155 144.896 204.75C144.896 203.284 145.621 201.987 146.731 201.198C146.58 200.573 146.5 199.921 146.5 199.25C146.5 198.416 146.624 197.612 146.853 196.853Z" fill="url(#paint4_linear_0_1)"/>
+<path id="Mask_24" opacity="0.44" d="M146.731 201.198C147.455 204.19 149.81 206.545 152.802 207.269C152.013 208.379 150.716 209.104 149.25 209.104C146.845 209.104 144.896 207.155 144.896 204.75C144.896 203.284 145.621 201.987 146.731 201.198Z" fill="url(#paint5_linear_0_1)"/>
+</g>
+</mask>
+<g mask="url(#mask5_0_1)">
+<rect id="Color_6" x="140" y="190" width="24" height="24" fill="#333333"/>
+</g>
+</g>
+<defs>
+<linearGradient id="paint0_linear_0_1" x1="157" y1="312" x2="145.862" y2="294.937" gradientUnits="userSpaceOnUse">
+<stop stop-opacity="0.5"/>
+<stop offset="1" stop-opacity="0.8"/>
+</linearGradient>
+<linearGradient id="paint1_linear_0_1" x1="153.132" y1="298" x2="153.132" y2="291" gradientUnits="userSpaceOnUse">
+<stop stop-opacity="0.15"/>
+<stop offset="1" stop-opacity="0.5"/>
+</linearGradient>
+<linearGradient id="paint2_linear_0_1" x1="160.5" y1="259.278" x2="143.918" y2="241.213" gradientUnits="userSpaceOnUse">
+<stop/>
+<stop offset="1" stop-opacity="0.7"/>
+</linearGradient>
+<linearGradient id="paint3_linear_0_1" x1="162" y1="242.5" x2="142.5" y2="246" gradientUnits="userSpaceOnUse">
+<stop stop-opacity="0.45"/>
+<stop offset="1" stop-opacity="0.3"/>
+</linearGradient>
+<linearGradient id="paint4_linear_0_1" x1="143" y1="210.5" x2="153.5" y2="201" gradientUnits="userSpaceOnUse">
+<stop/>
+<stop offset="1" stop-opacity="0.35"/>
+</linearGradient>
+<linearGradient id="paint5_linear_0_1" x1="145.875" y1="207.88" x2="151.017" y2="203.228" gradientUnits="userSpaceOnUse">
+<stop/>
+<stop offset="1" stop-opacity="0.35"/>
+</linearGradient>
+<linearGradient id="paint6_linear_0_1" x1="138.413" y1="161" x2="155.032" y2="139.653" gradientUnits="userSpaceOnUse">
+<stop/>
+<stop offset="1" stop-opacity="0.61"/>
+</linearGradient>
+</defs>
+</svg>

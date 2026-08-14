@@ -1,0 +1,45 @@
+<svg width="24" height="24" viewBox="140 440 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="tui-ic-medium / grid">
+<mask id="mask0_0_1" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="140" y="440" width="24" height="24">
+<g id="Mask">
+<path id="Mask_2" opacity="0.95" d="M142.5 447.658C142.5 445.914 143.918 444.5 145.667 444.5H150.813V447.658C150.813 449.402 149.395 450.816 147.646 450.816H142.5V447.658Z" fill="black"/>
+<path id="Mask_3" opacity="0.6" d="M142.5 456.342C142.5 454.598 143.918 453.184 145.667 453.184H150.813V456.342C150.813 458.086 149.395 459.5 147.646 459.5H142.5V456.342Z" fill="black"/>
+<path id="Mask_4" opacity="0.6" d="M153.188 447.658C153.188 445.914 154.605 444.5 156.354 444.5H161.5V447.658C161.5 449.402 160.082 450.816 158.333 450.816H153.188V447.658Z" fill="black"/>
+<path id="Mask_5" opacity="0.6" d="M153.188 456.342C153.188 454.598 154.605 453.184 156.354 453.184H161.5V456.342C161.5 458.086 160.082 459.5 158.333 459.5H153.188V456.342Z" fill="black"/>
+</g>
+</mask>
+<g mask="url(#mask0_0_1)">
+<rect id="Color" x="140" y="440" width="24" height="24" fill="#333333"/>
+</g>
+</g>
+<defs>
+<linearGradient id="paint0_linear_0_1" x1="157" y1="312" x2="145.862" y2="294.937" gradientUnits="userSpaceOnUse">
+<stop stop-opacity="0.5"/>
+<stop offset="1" stop-opacity="0.8"/>
+</linearGradient>
+<linearGradient id="paint1_linear_0_1" x1="153.132" y1="298" x2="153.132" y2="291" gradientUnits="userSpaceOnUse">
+<stop stop-opacity="0.15"/>
+<stop offset="1" stop-opacity="0.5"/>
+</linearGradient>
+<linearGradient id="paint2_linear_0_1" x1="160.5" y1="259.278" x2="143.918" y2="241.213" gradientUnits="userSpaceOnUse">
+<stop/>
+<stop offset="1" stop-opacity="0.7"/>
+</linearGradient>
+<linearGradient id="paint3_linear_0_1" x1="162" y1="242.5" x2="142.5" y2="246" gradientUnits="userSpaceOnUse">
+<stop stop-opacity="0.45"/>
+<stop offset="1" stop-opacity="0.3"/>
+</linearGradient>
+<linearGradient id="paint4_linear_0_1" x1="143" y1="210.5" x2="153.5" y2="201" gradientUnits="userSpaceOnUse">
+<stop/>
+<stop offset="1" stop-opacity="0.35"/>
+</linearGradient>
+<linearGradient id="paint5_linear_0_1" x1="145.875" y1="207.88" x2="151.017" y2="203.228" gradientUnits="userSpaceOnUse">
+<stop/>
+<stop offset="1" stop-opacity="0.35"/>
+</linearGradient>
+<linearGradient id="paint6_linear_0_1" x1="138.413" y1="161" x2="155.032" y2="139.653" gradientUnits="userSpaceOnUse">
+<stop/>
+<stop offset="1" stop-opacity="0.61"/>
+</linearGradient>
+</defs>
+</svg>

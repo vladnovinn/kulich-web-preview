@@ -1,0 +1,119 @@
+<svg width="304" height="604" viewBox="0 0 304 604" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="304" height="604" fill="#F5F5F5"/>
+<g id="Icons">
+<path d="M40 42C40 40.8954 40.8954 40 42 40H262C263.105 40 264 40.8954 264 42V562C264 563.105 263.105 564 262 564H42C40.8954 564 40 563.105 40 562V42Z" fill="white"/>
+<path d="M42 40V41H262V40V39H42V40ZM264 42H263V562H264H265V42H264ZM262 564V563H42V564V565H262V564ZM40 562H41V42H40H39V562H40ZM42 564V563C41.4477 563 41 562.552 41 562H40H39C39 563.657 40.3432 565 42 565V564ZM264 562H263C263 562.552 262.552 563 262 563V564V565C263.657 565 265 563.657 265 562H264ZM262 40V41C262.552 41 263 41.4477 263 42H264H265C265 40.3431 263.657 39 262 39V40ZM42 40V39C40.3431 39 39 40.3431 39 42H40H41C41 41.4477 41.4477 41 42 41V40Z" fill="black" fill-opacity="0.1"/>
+<g id="tui-ic-medium / grid">
+<mask id="mask0_0_1" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="140" y="440" width="24" height="24">
+<g id="Mask">
+<path id="Mask_2" opacity="0.95" d="M142.5 447.658C142.5 445.914 143.918 444.5 145.667 444.5H150.813V447.658C150.813 449.402 149.395 450.816 147.646 450.816H142.5V447.658Z" fill="black"/>
+<path id="Mask_3" opacity="0.6" d="M142.5 456.342C142.5 454.598 143.918 453.184 145.667 453.184H150.813V456.342C150.813 458.086 149.395 459.5 147.646 459.5H142.5V456.342Z" fill="black"/>
+<path id="Mask_4" opacity="0.6" d="M153.188 447.658C153.188 445.914 154.605 444.5 156.354 444.5H161.5V447.658C161.5 449.402 160.082 450.816 158.333 450.816H153.188V447.658Z" fill="black"/>
+<path id="Mask_5" opacity="0.6" d="M153.188 456.342C153.188 454.598 154.605 453.184 156.354 453.184H161.5V456.342C161.5 458.086 160.082 459.5 158.333 459.5H153.188V456.342Z" fill="black"/>
+</g>
+</mask>
+<g mask="url(#mask0_0_1)">
+<rect id="Color" x="140" y="440" width="24" height="24" fill="#333333"/>
+</g>
+</g>
+<g id="tui-ic-medium / wallet">
+<mask id="mask1_0_1" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="142" y="393" width="20" height="18">
+<g id="Mask_6">
+<path id="Mask_7" opacity="0.4" d="M142 397V400C142 397.791 143.791 396 146 396L160 396V393H146C143.791 393 142 394.791 142 397Z" fill="black"/>
+<path id="Mask_8" fill-rule="evenodd" clip-rule="evenodd" d="M142 400C142 397.791 143.791 396 146 396H162V407.25C162 409.321 160.372 411 158.364 411H142V400ZM157 402C156.172 402 155.5 402.672 155.5 403.5C155.5 404.328 156.172 405 157 405H157.5C158.328 405 159 404.328 159 403.5C159 402.672 158.328 402 157.5 402H157Z" fill="black"/>
+</g>
+</mask>
+<g mask="url(#mask1_0_1)">
+<path id="Color_2" d="M140 390H164V414H140V390Z" fill="#333333"/>
+</g>
+</g>
+<g id="tui-ic-medium / coin">
+<mask id="mask2_0_1" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="140" y="340" width="24" height="24">
+<g id="Mask_9">
+<path id="Mask_10" opacity="0.85" fill-rule="evenodd" clip-rule="evenodd" d="M141 352C141 345.925 145.925 341 152 341C158.075 341 163 345.925 163 352C163 358.075 158.075 363 152 363C145.925 363 141 358.075 141 352ZM152 357.806C155.206 357.806 157.806 355.206 157.806 352C157.806 348.794 155.206 346.194 152 346.194C148.794 346.194 146.194 348.794 146.194 352C146.194 355.206 148.794 357.806 152 357.806Z" fill="black"/>
+<circle id="Mask_11" opacity="0.35" cx="152" cy="352" r="6" fill="black"/>
+</g>
+</mask>
+<g mask="url(#mask2_0_1)">
+<rect id="Color_3" x="140" y="340" width="24" height="24" fill="#333333"/>
+</g>
+</g>
+<g id="tui-ic-medium / pos-terminal">
+<mask id="mask3_0_1" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="145" y="291" width="15" height="22">
+<g id="Mask_12">
+<path id="Mask_13" fill-rule="evenodd" clip-rule="evenodd" d="M155 312.5H157.5C158.605 312.5 159.5 311.605 159.5 310.5V296C159.5 294.895 158.605 294 157.5 294H155C156.105 294 157 294.895 157 296V310.5C157 311.605 156.105 312.5 155 312.5Z" fill="black"/>
+<path id="Mask_14" fill-rule="evenodd" clip-rule="evenodd" d="M146.5 294.063C145.637 294.285 145 295.068 145 296V312.5H155C156.105 312.5 157 311.605 157 310.5V296C157 294.895 156.105 294 155 294H154V295C154 295.649 154.211 296.281 154.6 296.8L155.5 298H149H148.5H148L147.379 297.379C146.816 296.816 146.5 296.053 146.5 295.257V294.063ZM147.5 301C147.5 300.448 147.948 300 148.5 300H153.5C154.052 300 154.5 300.448 154.5 301V306C154.5 306.552 154.052 307 153.5 307H148.5C147.948 307 147.5 306.552 147.5 306V301Z" fill="url(#paint0_linear_0_1)"/>
+<path id="Mask_15" fill-rule="evenodd" clip-rule="evenodd" d="M146.5 291H148.5H149H154V295C154 295.649 154.211 296.281 154.6 296.8L155.5 298H149H148.5H148L147.379 297.379C146.816 296.816 146.5 296.053 146.5 295.257V291Z" fill="url(#paint1_linear_0_1)"/>
+</g>
+</mask>
+<g mask="url(#mask3_0_1)">
+<path id="Color_4" d="M140 290H164V314H140V290Z" fill="#333333"/>
+</g>
+</g>
+<g id="tui-ic-medium / calendar-check">
+<mask id="mask4_0_1" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="142" y="242" width="20" height="20">
+<g id="Mask_16">
+<path id="Mask_17" fill-rule="evenodd" clip-rule="evenodd" d="M162 246.5H142V257.5C142 259.709 143.791 261.5 146 261.5H155.5V255H162V246.5ZM156.443 250.68L150.743 256.381L146.5 252.138L146.853 251.784C147.634 251.003 148.901 251.003 149.682 251.784L150.743 252.845L153.252 250.336C154.019 249.568 155.259 249.553 156.045 250.302L156.443 250.68Z" fill="url(#paint2_linear_0_1)"/>
+<path id="Mask_18" fill-rule="evenodd" clip-rule="evenodd" d="M158 242.5H142V246.5H162C162 244.291 160.209 242.5 158 242.5Z" fill="url(#paint3_linear_0_1)"/>
+<path id="Mask_19" opacity="0.4" d="M162 255L155.5 255L155.5 261.5L162 255Z" fill="black"/>
+</g>
+</mask>
+<g mask="url(#mask4_0_1)">
+<path id="Color_5" d="M140 240H164V264H140V240Z" fill="#333333"/>
+</g>
+</g>
+<g id="tui-ic-medium / two-coins">
+<mask id="mask5_0_1" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="141" y="191" width="22" height="22">
+<g id="Mask_20">
+<path id="Mask_21" opacity="0.85" fill-rule="evenodd" clip-rule="evenodd" d="M146.5 199.25C146.5 194.694 150.194 191 154.75 191C159.306 191 163 194.694 163 199.25C163 203.806 159.306 207.5 154.75 207.5C150.194 207.5 146.5 203.806 146.5 199.25ZM154.75 203.604C157.155 203.604 159.104 201.655 159.104 199.25C159.104 196.845 157.155 194.896 154.75 194.896C152.345 194.896 150.396 196.845 150.396 199.25C150.396 201.655 152.345 203.604 154.75 203.604Z" fill="black"/>
+<path id="Mask_22" opacity="0.35" d="M159.104 199.25C159.104 201.655 157.155 203.604 154.75 203.604C152.345 203.604 150.396 201.655 150.396 199.25C150.396 196.845 152.345 194.896 154.75 194.896C157.155 194.896 159.104 196.845 159.104 199.25Z" fill="black"/>
+<path id="Mask_23" opacity="0.68" d="M146.853 196.853C143.466 197.88 141 201.027 141 204.75C141 209.306 144.694 213 149.25 213C152.973 213 156.12 210.534 157.147 207.146C156.388 207.376 155.583 207.5 154.75 207.5C154.079 207.5 153.427 207.42 152.802 207.269C152.013 208.379 150.716 209.104 149.25 209.104C146.845 209.104 144.896 207.155 144.896 204.75C144.896 203.284 145.621 201.987 146.731 201.198C146.58 200.573 146.5 199.921 146.5 199.25C146.5 198.416 146.624 197.612 146.853 196.853Z" fill="url(#paint4_linear_0_1)"/>
+<path id="Mask_24" opacity="0.44" d="M146.731 201.198C147.455 204.19 149.81 206.545 152.802 207.269C152.013 208.379 150.716 209.104 149.25 209.104C146.845 209.104 144.896 207.155 144.896 204.75C144.896 203.284 145.621 201.987 146.731 201.198Z" fill="url(#paint5_linear_0_1)"/>
+</g>
+</mask>
+<g mask="url(#mask5_0_1)">
+<rect id="Color_6" x="140" y="190" width="24" height="24" fill="#333333"/>
+</g>
+</g>
+<g id="tui-ic-medium / home">
+<mask id="mask6_0_1" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="143" y="141" width="18" height="20">
+<g id="Mask_25">
+<path id="Mask_26" d="M152 141L161 150V158C161 159.657 159.657 161 158 161H155V154H149V161H143V150L152 141Z" fill="url(#paint6_linear_0_1)"/>
+</g>
+</mask>
+<g mask="url(#mask6_0_1)">
+<rect id="Color_7" x="140" y="140" width="24" height="24" fill="#333333"/>
+</g>
+</g>
+</g>
+<defs>
+<linearGradient id="paint0_linear_0_1" x1="157" y1="312" x2="145.862" y2="294.937" gradientUnits="userSpaceOnUse">
+<stop stop-opacity="0.5"/>
+<stop offset="1" stop-opacity="0.8"/>
+</linearGradient>
+<linearGradient id="paint1_linear_0_1" x1="153.132" y1="298" x2="153.132" y2="291" gradientUnits="userSpaceOnUse">
+<stop stop-opacity="0.15"/>
+<stop offset="1" stop-opacity="0.5"/>
+</linearGradient>
+<linearGradient id="paint2_linear_0_1" x1="160.5" y1="259.278" x2="143.918" y2="241.213" gradientUnits="userSpaceOnUse">
+<stop/>
+<stop offset="1" stop-opacity="0.7"/>
+</linearGradient>
+<linearGradient id="paint3_linear_0_1" x1="162" y1="242.5" x2="142.5" y2="246" gradientUnits="userSpaceOnUse">
+<stop stop-opacity="0.45"/>
+<stop offset="1" stop-opacity="0.3"/>
+</linearGradient>
+<linearGradient id="paint4_linear_0_1" x1="143" y1="210.5" x2="153.5" y2="201" gradientUnits="userSpaceOnUse">
+<stop/>
+<stop offset="1" stop-opacity="0.35"/>
+</linearGradient>
+<linearGradient id="paint5_linear_0_1" x1="145.875" y1="207.88" x2="151.017" y2="203.228" gradientUnits="userSpaceOnUse">
+<stop/>
+<stop offset="1" stop-opacity="0.35"/>
+</linearGradient>
+<linearGradient id="paint6_linear_0_1" x1="138.413" y1="161" x2="155.032" y2="139.653" gradientUnits="userSpaceOnUse">
+<stop/>
+<stop offset="1" stop-opacity="0.61"/>
+</linearGradient>
+</defs>
+</svg>

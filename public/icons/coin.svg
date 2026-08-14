@@ -1,0 +1,43 @@
+<svg width="24" height="24" viewBox="140 340 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="tui-ic-medium / coin">
+<mask id="mask2_0_1" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="140" y="340" width="24" height="24">
+<g id="Mask_9">
+<path id="Mask_10" opacity="0.85" fill-rule="evenodd" clip-rule="evenodd" d="M141 352C141 345.925 145.925 341 152 341C158.075 341 163 345.925 163 352C163 358.075 158.075 363 152 363C145.925 363 141 358.075 141 352ZM152 357.806C155.206 357.806 157.806 355.206 157.806 352C157.806 348.794 155.206 346.194 152 346.194C148.794 346.194 146.194 348.794 146.194 352C146.194 355.206 148.794 357.806 152 357.806Z" fill="black"/>
+<circle id="Mask_11" opacity="0.35" cx="152" cy="352" r="6" fill="black"/>
+</g>
+</mask>
+<g mask="url(#mask2_0_1)">
+<rect id="Color_3" x="140" y="340" width="24" height="24" fill="#333333"/>
+</g>
+</g>
+<defs>
+<linearGradient id="paint0_linear_0_1" x1="157" y1="312" x2="145.862" y2="294.937" gradientUnits="userSpaceOnUse">
+<stop stop-opacity="0.5"/>
+<stop offset="1" stop-opacity="0.8"/>
+</linearGradient>
+<linearGradient id="paint1_linear_0_1" x1="153.132" y1="298" x2="153.132" y2="291" gradientUnits="userSpaceOnUse">
+<stop stop-opacity="0.15"/>
+<stop offset="1" stop-opacity="0.5"/>
+</linearGradient>
+<linearGradient id="paint2_linear_0_1" x1="160.5" y1="259.278" x2="143.918" y2="241.213" gradientUnits="userSpaceOnUse">
+<stop/>
+<stop offset="1" stop-opacity="0.7"/>
+</linearGradient>
+<linearGradient id="paint3_linear_0_1" x1="162" y1="242.5" x2="142.5" y2="246" gradientUnits="userSpaceOnUse">
+<stop stop-opacity="0.45"/>
+<stop offset="1" stop-opacity="0.3"/>
+</linearGradient>
+<linearGradient id="paint4_linear_0_1" x1="143" y1="210.5" x2="153.5" y2="201" gradientUnits="userSpaceOnUse">
+<stop/>
+<stop offset="1" stop-opacity="0.35"/>
+</linearGradient>
+<linearGradient id="paint5_linear_0_1" x1="145.875" y1="207.88" x2="151.017" y2="203.228" gradientUnits="userSpaceOnUse">
+<stop/>
+<stop offset="1" stop-opacity="0.35"/>
+</linearGradient>
+<linearGradient id="paint6_linear_0_1" x1="138.413" y1="161" x2="155.032" y2="139.653" gradientUnits="userSpaceOnUse">
+<stop/>
+<stop offset="1" stop-opacity="0.61"/>
+</linearGradient>
+</defs>
+</svg>
