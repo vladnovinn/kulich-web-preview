@@ -12,6 +12,7 @@ import {
   type RefObject,
 } from 'react'
 import { getIcon, type IconId } from '../icons/registry'
+import { asset } from '../paths'
 
 export type AvatarState = 'normal' | 'hover' | 'selected'
 
@@ -255,7 +256,7 @@ function SidebarBrand({ minimize }: { minimize: boolean }) {
         <span className="kit-sidebar-brand-inner">
           <img
             className="kit-sidebar-mark"
-            src="/brand/mark.svg"
+            src={asset('brand/mark.svg')}
             alt=""
             width={24}
             height={24}
@@ -263,7 +264,7 @@ function SidebarBrand({ minimize }: { minimize: boolean }) {
           {minimize ? null : (
             <img
               className="kit-sidebar-wordmark"
-              src="/brand/wordmark.svg"
+              src={asset('brand/wordmark.svg')}
               alt=""
               width={73}
               height={10}

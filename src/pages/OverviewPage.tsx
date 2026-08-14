@@ -1,3 +1,5 @@
+import { APP_HREF } from '../paths'
+
 export function OverviewPage() {
   return (
     <article className="page">
@@ -7,7 +9,7 @@ export function OverviewPage() {
         <p className="lede">
           Живые примеры UI-библиотеки Kulich. Выберите компонент в боковой
           панели, откройте набор иконок или{' '}
-          <a className="text-link" href="/app" target="_blank" rel="noreferrer">
+          <a className="text-link" href={APP_HREF} target="_blank" rel="noreferrer">
             приложение
           </a>
           .

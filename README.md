@@ -1,23 +1,15 @@
 # Kulich web preview
 
-Веб-превью UI-кита Kulich и макета приложения Т-Банк Бизнес.
+Веб-превью UI-кита Kulich и макета приложения.
+
+Сайт: [https://vladnovinn.github.io/kulich-web-preview/](https://vladnovinn.github.io/kulich-web-preview/)
 
 - каталог компонентов: `/`
 - приложение: `/app`
 
-## Требования
+## Локальный запуск
 
-- [Node.js 22](https://nodejs.org/) (LTS)
-- npm (ставится вместе с Node)
-
-Проверка:
-
-```bash
-node -v
-npm -v
-```
-
-## Запуск
+Нужен [Node.js 22](https://nodejs.org/).
 
 ```bash
 git clone https://github.com/vladnovinn/kulich-web-preview.git
@@ -26,21 +18,9 @@ npm install
 npm run dev
 ```
 
-Откройте адрес из терминала, обычно [http://localhost:5173/](http://localhost:5173/).
+Откройте адрес из терминала. Из‑за GitHub Pages локально это обычно
+[http://localhost:5173/kulich-web-preview/](http://localhost:5173/kulich-web-preview/).
 
-Приложение: [http://localhost:5173/app](http://localhost:5173/app).
+Приложение: [http://localhost:5173/kulich-web-preview/app](http://localhost:5173/kulich-web-preview/app).
 
 Остановка: `Ctrl+C`.
-
-Если порт 5173 занят:
-
-```bash
-npm run dev -- --port 5174
-```
-
-## Сборка
-
-```bash
-npm run build
-npm run preview
-```

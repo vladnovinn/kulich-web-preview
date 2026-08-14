@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import { catalog, groupCatalogByCategory } from '../catalog/registry'
+import { APP_HREF } from '../paths'
 
 export function Sidebar() {
   const [query, setQuery] = useState('')
@@ -56,7 +57,7 @@ export function Sidebar() {
               <li>
                 <a
                   className="nav-launch"
-                  href="/app"
+                  href={APP_HREF}
                   target="_blank"
                   rel="noreferrer"
                 >
