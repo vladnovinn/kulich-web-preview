@@ -19,9 +19,7 @@ html:has(.app-frame) body {
   width: 64px;
   height: 64px;
   flex-shrink: 0;
-  background: var(--tui-background-accent-1);
-  -webkit-mask: url('/icons/loader.svg') center / 64px 64px no-repeat;
-  mask: url('/icons/loader.svg') center / 64px 64px no-repeat;
+  color: var(--tui-background-accent-1);
   animation: kit-spin 0.7s linear infinite;
 }
 
@@ -44,72 +42,35 @@ html:has(.app-frame) body {
 .app-frame .kit-sidebar-right:not(.is-minimize) {
   flex: 0 1 320px;
   width: 320px;
-  min-width: 284px;
   max-width: 320px;
+}
+
+.app-frame .kit-sidebar-left:not(.is-minimize) {
+  min-width: 256px;
+}
+
+.app-frame .kit-sidebar-right:not(.is-minimize) {
+  min-width: 284px;
 }
 
 .app-frame .kit-sidebar-nav {
   min-height: 0;
 }
 
+.app-frame .kit-nav-pinned > span,
+.app-frame .kit-nav-favorites > span {
+  display: contents;
+}
+
 .app-frame .kit-sidebar-left:not(.is-minimize) .kit-sidebar-nav {
-  overflow-x: hidden;
-  overflow-y: auto;
-  scrollbar-width: none;
+  overflow: hidden;
 }
 
 .app-frame .kit-sidebar-left:not(.is-minimize) .kit-sidebar-nav::-webkit-scrollbar {
-  width: 0;
-  height: 0;
+  display: none;
 }
 
-@media (max-height: 500px) {
-  .app-frame .kit-sidebar-left:not(.is-minimize) .kit-sidebar-nav:hover,
-  .app-frame .kit-sidebar-left:not(.is-minimize) .kit-sidebar-nav:focus-within {
-    scrollbar-width: thin;
-  }
-
-  .app-frame .kit-sidebar-left:not(.is-minimize) .kit-sidebar-nav:hover::-webkit-scrollbar,
-  .app-frame .kit-sidebar-left:not(.is-minimize) .kit-sidebar-nav:focus-within::-webkit-scrollbar {
-    width: 6px;
-  }
-
-  .app-frame .kit-sidebar-left:not(.is-minimize) .kit-sidebar-nav::-webkit-scrollbar-thumb {
-    background: rgb(0 16 36 / 0.22);
-    border-radius: 100px;
-  }
-
-  .app-frame .kit-sidebar-left.is-minimize .kit-sidebar-nav {
-    overflow-y: auto;
-    scrollbar-width: none;
-  }
-
-  .app-frame .kit-sidebar-left.is-minimize .kit-sidebar-nav::-webkit-scrollbar {
-    width: 0;
-    height: 0;
-  }
-
-  .app-frame .kit-sidebar-left.is-minimize .kit-sidebar-nav:hover,
-  .app-frame .kit-sidebar-left.is-minimize .kit-sidebar-nav:focus-within {
-    scrollbar-width: thin;
-  }
-
-  .app-frame .kit-sidebar-left.is-minimize .kit-sidebar-nav:hover::-webkit-scrollbar,
-  .app-frame .kit-sidebar-left.is-minimize .kit-sidebar-nav:focus-within::-webkit-scrollbar {
-    width: 6px;
-  }
-
-  .app-frame .kit-sidebar-left.is-minimize .kit-sidebar-nav::-webkit-scrollbar-thumb {
-    background: rgb(0 16 36 / 0.22);
-    border-radius: 100px;
-  }
-
-  .app-frame .kit-sidebar-left.is-minimize:is(:hover, :focus-within, .is-pinned, .is-hold-open) .kit-sidebar-nav {
-    overflow: visible;
-  }
-}
-
-.app-main {
+.app-frame .app-main {
   position: relative;
   isolation: isolate;
   z-index: 0;
@@ -119,7 +80,7 @@ html:has(.app-frame) body {
   align-items: center;
   min-width: 1168px;
   height: 100svh;
-  overflow: hidden;
+  overflow: visible;
   padding: 0;
   background: var(--tui-background-base-alt);
 }
@@ -131,6 +92,155 @@ html:has(.app-frame) body {
   width: 1168px;
   min-width: 1168px;
   padding-top: 16px;
+}
+
+.app-main-search.has-search-button {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.app-search-cluster {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.app-search-cluster > .kit-segmented,
+.app-search-cluster > .kit-search {
+  z-index: 1;
+  animation: app-enter 0.55s cubic-bezier(0.22, 1, 0.36, 1) backwards;
+}
+
+.app-main-search > .kit-search > .kit-search-field {
+  animation: app-enter 0.55s cubic-bezier(0.22, 1, 0.36, 1) backwards;
+}
+
+.app-main-search > .kit-search > .kit-search-bg {
+  animation: app-enter-fade 0.55s cubic-bezier(0.22, 1, 0.36, 1) backwards;
+}
+
+.app-wide-search-skeleton {
+  flex: 1 1 auto;
+  width: 100%;
+  height: 56px;
+  border-radius: 48px;
+}
+
+.app-frame.is-right-compact .app-main-search > .app-wide-search-skeleton {
+  width: auto;
+  min-width: 0;
+}
+
+@keyframes app-enter {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes app-enter-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.app-search-balance {
+  display: none;
+}
+
+.app-favorite-toolbar-skeleton {
+  flex: 1 1 auto;
+  width: 100%;
+  max-width: 1168px;
+  height: 56px;
+  border-radius: 28px;
+}
+
+@media (min-width: 1345px) {
+  .app-search-cluster {
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .app-search-balance {
+    display: block;
+    visibility: hidden;
+    pointer-events: none;
+  }
+}
+
+@media (max-width: 1344px) {
+  .app-search-cluster {
+    flex: 1 1 auto;
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .app-search-cluster > .kit-segmented {
+    flex: 0 1 auto;
+    width: max-content;
+    min-width: 0;
+    max-width: calc(100% - 72px);
+  }
+
+  .app-search-cluster > .kit-search {
+    flex: 0 0 56px;
+  }
+}
+
+.app-frame.is-right-compact .app-main-search.has-search-button .kit-sidebar-right-header {
+  margin-left: auto;
+}
+
+@media (min-width: 1064px) and (max-width: 1279px) {
+  .app-main-search.has-search-button .app-search-cluster,
+  .app-main-search.has-search-button > .app-favorite-toolbar-skeleton {
+    flex: 0 1 auto;
+    width: auto;
+    max-width: 888px;
+    margin-left: max(0px, calc((100% - 888px) / 2));
+  }
+}
+
+.app-main-body {
+  position: relative;
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  width: 100%;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.app-main-motion {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  width: 100%;
+  min-height: 0;
+  opacity: 1;
+  transform: none;
+  transition:
+    transform 450ms cubic-bezier(0.05, 0.7, 0.1, 1),
+    opacity 210ms linear 50ms;
+}
+
+.app-main.is-services-open .app-main-motion {
+  transform: translateX(100%);
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    transform 300ms cubic-bezier(0.3, 0, 0.8, 0.15),
+    opacity 150ms linear 80ms;
 }
 
 .app-main-scroll {
@@ -149,17 +259,88 @@ html:has(.app-frame) body {
   height: 0;
 }
 
-.app-main-container {
+.app-main-container,
+.app-services-panel {
   display: flex;
-  flex: 1 0 auto;
   flex-direction: column;
   width: 1168px;
   min-width: 1168px;
   margin-top: 32px;
-  margin-bottom: 32px;
+  margin-bottom: 16px;
   padding: 32px;
   border-radius: 32px;
   background: var(--tui-background-base);
+}
+
+.app-main-container {
+  flex: 1 0 auto;
+}
+
+.app-services-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  justify-content: safe center;
+  align-items: flex-start;
+  overflow: auto;
+  scrollbar-width: none;
+  animation:
+    app-services-in-move 450ms cubic-bezier(0.05, 0.7, 0.1, 1) both,
+    app-services-in-fade 210ms linear 50ms both;
+}
+
+.app-services-layer::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+.app-services-layer.is-closing {
+  animation:
+    app-services-out-move 300ms cubic-bezier(0.3, 0, 0.8, 0.15) both,
+    app-services-out-fade 150ms linear 80ms both;
+  pointer-events: none;
+}
+
+.app-services-panel {
+  flex: 0 0 auto;
+  background: var(--tui-background-base-alt);
+}
+
+@keyframes app-services-in-move {
+  from {
+    transform: translateX(-8%);
+  }
+  to {
+    transform: none;
+  }
+}
+
+@keyframes app-services-in-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes app-services-out-move {
+  from {
+    transform: none;
+  }
+  to {
+    transform: translateX(-8%);
+  }
+}
+
+@keyframes app-services-out-fade {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
 }
 
 .app-main-loader {
@@ -170,12 +351,56 @@ html:has(.app-frame) body {
   min-height: 480px;
 }
 
+.app-main-loader .app-loader {
+  color: var(--tui-background-accent-1);
+}
+
+.app-main-loader .app-loader path {
+  fill: var(--tui-background-accent-1);
+  fill-opacity: 1;
+}
+
 .app-main-content {
   display: flex;
   flex-direction: column;
   gap: 24px;
   width: 1104px;
   min-width: 1104px;
+}
+
+.app-main-content:has(.app-accounting) {
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+.app-accounting {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+  min-height: 0;
+}
+
+.app-accounting .kit-header-block,
+.app-accounting .kit-header {
+  width: 100%;
+}
+
+.app-accounting-cards {
+  display: grid;
+  flex: 1 1 auto;
+  grid-template-columns: minmax(0, 1fr) 336px;
+  gap: 96px;
+  width: 100%;
+  min-height: 0;
+}
+
+.app-accounting-cards > .kit-card-large {
+  height: 100%;
+  min-height: 0;
+  background: var(--tui-background-neutral-1);
+  box-shadow: none;
 }
 
 .app-main-title {
@@ -194,6 +419,11 @@ html:has(.app-frame) body {
   background: var(--tui-background-neutral-1);
 }
 
+.app-main-block.is-tall {
+  height: 340px;
+  background: var(--tui-background-neutral-1);
+}
+
 .app-main-table {
   flex: 1 1 auto;
   width: 100%;
@@ -209,11 +439,16 @@ html:has(.app-frame) body {
 }
 
 .app-frame.is-wide-content .app-main-search,
-.app-frame.is-wide-content .app-main-container {
+.app-frame.is-wide-content .app-main-container,
+.app-frame.is-wide-content .app-services-panel {
   width: auto;
   min-width: 0;
   max-width: none;
   align-self: stretch;
+}
+
+.app-frame.is-wide-content .app-favorite-toolbar-skeleton {
+  max-width: none;
 }
 
 .app-frame.is-wide-content .app-main-content {
@@ -222,16 +457,21 @@ html:has(.app-frame) body {
   flex: 1 1 auto;
 }
 
-@media (max-width: 1024px) {
-  .app-main {
+@media (max-width: 1279px) {
+  .app-frame .app-main {
     flex-basis: 888px;
     min-width: 888px;
   }
 
   .app-main-search,
-  .app-main-container {
+  .app-main-container,
+  .app-services-panel {
     width: 888px;
     min-width: 888px;
+  }
+
+  .app-favorite-toolbar-skeleton {
+    max-width: 888px;
   }
 
   .app-main-content {
@@ -246,15 +486,61 @@ html:has(.app-frame) body {
 
   .app-frame.is-wide-content .app-main-search,
   .app-frame.is-wide-content .app-main-container,
-  .app-frame.is-wide-content .app-main-content {
+  .app-frame.is-wide-content .app-main-content,
+  .app-frame.is-wide-content .app-services-panel {
     width: auto;
     min-width: 0;
   }
 }
 
+@media (max-width: 1279px) {
+  .app-frame .app-main:has(.app-main-search.has-search-button) {
+    min-width: 0;
+  }
+
+  .app-main-search.has-search-button {
+    align-self: stretch;
+    box-sizing: border-box;
+    width: auto;
+    min-width: 0;
+    max-width: none;
+  }
+
+  .app-main:has(.app-main-search.has-search-button) .app-main-container,
+  .app-main:has(.app-main-search.has-search-button) .app-services-panel {
+    width: 100%;
+    min-width: 0;
+    max-width: 888px;
+  }
+
+  .app-main:has(.app-main-search.has-search-button) .app-main-content {
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .app-main:has(.app-main-search.has-search-button) .app-favorite-toolbar-skeleton {
+    flex: 1 1 auto;
+    width: auto;
+    min-width: 0;
+    max-width: none;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .app-loader {
+  .app-loader,
+  .app-search-cluster > .kit-segmented,
+  .app-search-cluster > .kit-search,
+  .app-search-cluster > .kit-search-bg,
+  .app-main-search > .kit-search > .kit-search-field,
+  .app-main-search > .kit-search > .kit-search-bg,
+  .app-services-layer,
+  .app-services-layer.is-closing {
     animation: none;
+  }
+
+  .app-main-motion {
+    transition: none;
   }
 
   .app-frame .kit-sidebar-left,

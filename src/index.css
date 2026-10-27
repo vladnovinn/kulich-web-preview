@@ -30,6 +30,70 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: 'T-Sans';
+  src: url('/fonts/T-Sans_Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'T-Sans';
+  src: url('/fonts/T-Sans_Medium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'T-Sans';
+  src: url('/fonts/T-Sans_Medium.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'T-Sans';
+  src: url('/fonts/T-Sans_Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'T-Sans Condensed';
+  src: url('/fonts/T-Sans_Condensed_Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'T-Sans Condensed';
+  src: url('/fonts/T-Sans-Condensed-Medium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'T-Sans Condensed';
+  src: url('/fonts/T-Sans-Condensed-Medium.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'T-Sans Condensed';
+  src: url('/fonts/T-Sans_Condensed_Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   --bg: #f4efe4;
   --bg-raised: #fbf7ef;
@@ -48,6 +112,8 @@
   --status-deprecated: #8a3d32;
   --serif: 'Fraunces', 'Iowan Old Style', Georgia, serif;
   --sans: 'Neue Haas Unica W1G', 'Segoe UI', system-ui, sans-serif;
+  --sans-t: 'T-Sans', 'Neue Haas Unica W1G', 'Segoe UI', system-ui, sans-serif;
+  --sans-condensed: 'T-Sans Condensed', 'T-Sans', 'Neue Haas Unica W1G', 'Segoe UI', system-ui, sans-serif;
   --mono: 'IBM Plex Mono', ui-monospace, Menlo, monospace;
 }
 
@@ -119,7 +185,12 @@ code {
   display: flex;
   flex-direction: column;
   gap: 20px;
+  align-self: start;
+  position: sticky;
+  top: 0;
+  height: 100svh;
   padding: 24px 18px;
+  overflow: hidden;
   background: var(--sidebar);
   color: var(--sidebar-ink);
   border-right: 1px solid var(--sidebar-line);
@@ -189,6 +260,7 @@ code {
 
 .sidebar-nav {
   flex: 1;
+  min-height: 0;
   overflow: auto;
 }
 
@@ -527,12 +599,12 @@ code {
   width: 48px;
   height: 48px;
   overflow: clip;
+  color: #333333;
 }
 
-.icon-card-glyph img {
+.icon-card-glyph .kit-icon {
   width: 24px;
   height: 24px;
-  object-fit: contain;
 }
 
 .icon-card-name {
@@ -557,6 +629,9 @@ code {
   }
 
   .sidebar {
+    position: static;
+    height: auto;
+    overflow: visible;
     border-right: 0;
     border-bottom: 1px solid var(--sidebar-line);
   }

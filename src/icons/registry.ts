@@ -18,6 +18,10 @@ export const icons: IconEntry[] = [
   { id: 'bell', name: 'Bell', src: asset('icons/bell.svg') },
   { id: 'pencil', name: 'Pencil', src: asset('icons/pencil.svg') },
   { id: 'chat', name: 'Chat', src: asset('icons/chat.svg') },
+  { id: 'doc', name: 'Doc', src: asset('icons/doc.svg') },
+  { id: 'doc-arrow-up', name: 'Doc arrow up', src: asset('icons/doc-arrow-up.svg') },
+  { id: 'star', name: 'Star', src: asset('icons/star.svg') },
+  { id: 'tariffs', name: 'Tariffs', src: asset('icons/tariffs.svg') },
 ]
 
 export type IconId = (typeof icons)[number]['id']

@@ -1,9 +1,16 @@
 import type { CatalogEntry } from './types'
+import { AllServicesDemo } from '../demos/AllServicesDemo'
 import { AvatarDemo } from '../demos/AvatarDemo'
+import { BadgeDemo } from '../demos/BadgeDemo'
 import { BodyDemo } from '../demos/BodyDemo'
+import { ButtonDemo } from '../demos/ButtonDemo'
+import { CardLargeDemo } from '../demos/CardLargeDemo'
+import { CompanySheetDemo } from '../demos/CompanySheetDemo'
 import { CellDemo } from '../demos/CellDemo'
+import { HeaderDemo } from '../demos/HeaderDemo'
 import { CellStackDemo } from '../demos/CellStackDemo'
 import { SearchInputDemo } from '../demos/SearchInputDemo'
+import { SegmentedDemo } from '../demos/SegmentedDemo'
 import { SidebarLeftDemo } from '../demos/SidebarLeftDemo'
 import { SidebarRightDemo } from '../demos/SidebarRightDemo'
 
@@ -15,6 +22,23 @@ export const catalog: CatalogEntry[] = [
     description: 'Атом 40×40: иконка из каталога, состояния Normal, Hover и Selected.',
     status: 'draft',
     Demo: AvatarDemo,
+  },
+  {
+    slug: 'badge',
+    name: 'Badge',
+    category: 'Content',
+    description: 'Бейдж Accent 1 в размерах XL, L, M и S.',
+    status: 'draft',
+    Demo: BadgeDemo,
+  },
+  {
+    slug: 'button',
+    name: 'Button',
+    category: 'Content',
+    description:
+      'Кнопки Primary, Accent, Secondary, Flat, Outline и Floating в размерах L, M, S и XS.',
+    status: 'draft',
+    Demo: ButtonDemo,
   },
   {
     slug: 'cell',
@@ -43,11 +67,20 @@ export const catalog: CatalogEntry[] = [
     Demo: SearchInputDemo,
   },
   {
+    slug: 'segmented',
+    name: 'Segmented',
+    category: 'Navigation',
+    description:
+      'Переключатель между разделами или состояниями в размерах L, M и S.',
+    status: 'draft',
+    Demo: SegmentedDemo,
+  },
+  {
     slug: 'sidebar-left',
     name: 'Sidebar Left',
     category: 'Layout',
     description:
-      'Левая панель: логотип, Cell и CellStack. Свёрнутая версия на ховере раскрывается в панель с меню. Skeleton — пока данные меню ещё не пришли.',
+      'Левая панель: логотип и пункты меню. Свёрнутая версия на ховере раскрывается в панель с меню. Skeleton — пока данные меню ещё не пришли.',
     status: 'draft',
     layout: 'fill',
     Demo: SidebarLeftDemo,
@@ -61,6 +94,44 @@ export const catalog: CatalogEntry[] = [
     status: 'draft',
     layout: 'fill',
     Demo: SidebarRightDemo,
+  },
+  {
+    slug: 'card-large',
+    name: 'Card Large',
+    category: 'Layout',
+    description:
+      'Большая карточка: базовая, аватар, один пункт, списки, футер, изображение, отступы и поповер.',
+    status: 'draft',
+    Demo: CardLargeDemo,
+  },
+  {
+    slug: 'header',
+    name: 'Header',
+    category: 'Layout',
+    description:
+      'Заголовок секции в размерах H1–H6 и Body L, M, S. Размер бейджа и кнопки следует за размером заголовка.',
+    status: 'draft',
+    Demo: HeaderDemo,
+  },
+  {
+    slug: 'company-sheet',
+    name: 'Шторка компании',
+    category: 'Layout',
+    description:
+      'Меню профиля и компаний: свёрнутая и раскрытая кнопка счёта и шторка со всеми состояниями личного кабинета.',
+    status: 'draft',
+    layout: 'fill',
+    Demo: CompanySheetDemo,
+  },
+  {
+    slug: 'all-services',
+    name: 'Все сервисы',
+    category: 'Layout',
+    description:
+      'Каталог сервисов в три колонки на широком экране и в две на узком. В каждой ячейке иконка Star.',
+    status: 'draft',
+    layout: 'fill',
+    Demo: AllServicesDemo,
   },
   {
     slug: 'body',

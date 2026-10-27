@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react'
+import { IconSvg } from '../icons/inline'
 import { icons } from '../icons/registry'
 
 const FIGMA_SOURCE =
@@ -31,7 +32,7 @@ export function IconsPage() {
           <a className="text-link" href={FIGMA_SOURCE} target="_blank" rel="noreferrer">
             Figma
           </a>
-          . SVG лежат в <code>public/icons</code>.
+          . Файлы лежат в <code>public/icons</code>.
         </p>
       </header>
 
@@ -60,7 +61,7 @@ export function IconsPage() {
                 onClick={() => copyId(icon.id)}
               >
                 <div className="icon-card-glyph">
-                  <img src={icon.src} alt="" width={24} height={24} />
+                  <IconSvg name={icon.id} />
                 </div>
                 <p className="icon-card-name">{icon.name}</p>
                 <p className="icon-card-meta">
