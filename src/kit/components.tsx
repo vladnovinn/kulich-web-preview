@@ -383,13 +383,16 @@ export function Segmented({
         if (child === root) continue
         const style = getComputedStyle(child)
         if (style.display === 'none' || style.position === 'absolute') continue
-        siblings += (child as HTMLElement).offsetWidth
+        siblings += child.getBoundingClientRect().width
         siblingCount += 1
       }
-      const available = parent.clientWidth - siblings - gap * siblingCount
+      const available = Math.max(0, parent.clientWidth
+        - (Number.parseFloat(parentStyle.paddingLeft) || 0)
+        - (Number.parseFloat(parentStyle.paddingRight) || 0)
+        - siblings - gap * siblingCount)
       const widths = new Map<string, number>()
       measure.querySelectorAll<HTMLButtonElement>('button[data-value]').forEach((button) => {
-        widths.set(button.dataset.value ?? '', button.offsetWidth)
+        widths.set(button.dataset.value ?? '', button.getBoundingClientRect().width)
       })
 
       const menuParent = visibleItems.find((item) => item.menu?.length)
@@ -412,8 +415,10 @@ export function Segmented({
         return hidden
       }
 
-      let hidden = take(available - selectedWidth - menuWidth)
-      if (hidden.length > 0 && !menuParent) hidden = take(available - selectedWidth - moreWidth)
+      const totalWidth = visibleItems.reduce((sum, item) => sum + (widths.get(item.value) ?? 0), 0)
+      const hidden = totalWidth <= available
+        ? []
+        : take(available - selectedWidth - (menuParent ? menuWidth : moreWidth))
       setCollapsedValues((current) =>
         current.length === hidden.length && current.every((entry, index) => entry === hidden[index])
           ? current
@@ -424,8 +429,24 @@ export function Segmented({
     fit()
     const observer = new ResizeObserver(fit)
     observer.observe(parent)
-    return () => observer.disconnect()
-  }, [collapseOverflow, selectedValue, visibleItems])
+    observer.observe(measure)
+    for (const child of parent.children) {
+      if (child !== root) observer.observe(child)
+    }
+    window.addEventListener('resize', fit)
+    document.fonts.addEventListener('loadingdone', fit)
+    return () => {
+      observer.disconnect()
+      window.removeEventListener('resize', fit)
+      document.fonts.removeEventListener('loadingdone', fit)
+    }
+  }, [collapseOverflow, selectedValue, visibleItems, size])
+
+  useEffect(() => {
+    if (openValue && !displayItems.some((item) => item.value === openValue && item.menu?.length)) {
+      setOpenValue(null)
+    }
+  }, [displayItems, openValue])
 
   useLayoutEffect(() => {
     const root = rootRef.current
@@ -579,7 +600,7 @@ const CellStackContext = createContext<CellStackContextValue | null>(null)
 type SidebarLeftContextValue = {
   minimize: boolean
   setMenuHold: (hold: boolean) => void
-  collapseFlyout: () => void
+  collapseFlyout: (requireReentry?: boolean) => void
   rootRef: RefObject<HTMLElement | null>
 }
 
@@ -866,10 +887,15 @@ export function SidebarLeft({
   skeleton = false,
   onMenuClick,
 }: SidebarLeftProps) {
+  const hasTouchscreen =
+    typeof navigator !== 'undefined' && navigator.maxTouchPoints > 0
   const rootRef = useRef<HTMLElement>(null)
   const navClipRef = useRef<HTMLDivElement>(null)
   const collapseAnimationTimerRef = useRef<number | undefined>(undefined)
   const collapseAnimationActiveRef = useRef(false)
+  const hoverRequiresReentryRef = useRef(false)
+  const mouseLeftAfterClickRef = useRef(false)
+  const lastMousePositionRef = useRef<{ x: number; y: number } | null>(null)
   const [pinned, setPinned] = useState(false)
   const [hoverLocked, setHoverLocked] = useState(false)
   const [collapseAnimating, setCollapseAnimating] = useState(false)
@@ -943,7 +969,8 @@ export function SidebarLeft({
       window.clearTimeout(collapseAnimationTimerRef.current)
       collapseAnimationActiveRef.current = false
       setPinned(false)
-      setHoverLocked(false)
+      // Keep the click lock through layout changes while route data loads.
+      // Only movement onto an unselected item should resume hover expansion.
       setCollapseAnimating(false)
     }
   }, [minimize])
@@ -972,7 +999,9 @@ export function SidebarLeft({
     return () => document.removeEventListener('pointerdown', onPointerDown)
   }, [minimize, pinned, runCollapseAnimation, skeleton])
 
-  const collapseFlyout = useCallback(() => {
+  const collapseFlyout = useCallback((requireReentry = false) => {
+    hoverRequiresReentryRef.current = requireReentry
+    mouseLeftAfterClickRef.current = false
     setPinned(false)
     setMenuHoldState(false)
     setHoverLocked(true)
@@ -999,8 +1028,37 @@ export function SidebarLeft({
     onMenuClick?.()
   }
 
-  const handleMouseLeave = () => {
+  const resumeHover = () => {
+    if (!minimize || skeleton) return
+    hoverRequiresReentryRef.current = false
+    mouseLeftAfterClickRef.current = false
+    window.clearTimeout(collapseAnimationTimerRef.current)
+    collapseAnimationActiveRef.current = false
+    setCollapseAnimating(false)
     setHoverLocked(false)
+  }
+
+  const handleMouseMove = (event: MouseEvent<HTMLElement>) => {
+    const previous = lastMousePositionRef.current
+    lastMousePositionRef.current = { x: event.clientX, y: event.clientY }
+    if (!hoverLocked || !(event.target instanceof Element)) return
+    if (previous?.x === event.clientX && previous.y === event.clientY) return
+    const cell = event.target.closest('.kit-cell')
+    if (
+      cell &&
+      !cell.matches('.kit-cell-selected, .kit-cell-selected-alt') &&
+      !(hoverRequiresReentryRef.current && cell.closest('[data-sidebar-menu-item="all"]'))
+    ) {
+      resumeHover()
+    }
+  }
+
+  const handleMouseEnter = () => {
+    if (hoverRequiresReentryRef.current && mouseLeftAfterClickRef.current) resumeHover()
+  }
+
+  const handleMouseLeave = () => {
+    if (hoverRequiresReentryRef.current) mouseLeftAfterClickRef.current = true
     if (
       minimize &&
       !pinned &&
@@ -1061,6 +1119,11 @@ export function SidebarLeft({
         ref={rootRef}
         className={className}
         aria-busy={skeleton || undefined}
+        onClickCapture={(event) => {
+          lastMousePositionRef.current = { x: event.clientX, y: event.clientY }
+        }}
+        onMouseEnter={handleMouseEnter}
+        onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
         onBlur={handleBlur}
       >
@@ -1078,7 +1141,7 @@ export function SidebarLeft({
               <span className="kit-sidebar-nav-scrollbar-thumb" />
             </span>
           </nav>
-          {minimize ? (
+          {minimize && hasTouchscreen ? (
             <button
               type="button"
               className={`kit-sidebar-menu-btn${pinned ? ' is-selected' : ''}`}

@@ -7,6 +7,7 @@ html:has(.app-frame) body {
   display: flex;
   align-items: stretch;
   min-height: 100svh;
+  overflow-x: clip;
   background: #f6f7f8;
 }
 
@@ -35,7 +36,8 @@ html:has(.app-frame) body {
   transition:
     width 0.5s cubic-bezier(0.22, 1, 0.36, 1),
     min-width 0.5s cubic-bezier(0.22, 1, 0.36, 1),
-    max-width 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+    max-width 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 210ms linear;
 }
 
 .app-frame .kit-sidebar-left:not(.is-minimize),
@@ -155,6 +157,11 @@ html:has(.app-frame) body {
 
 .app-search-balance {
   display: none;
+  flex: 0 0 56px;
+}
+
+.app-search-cluster > .kit-search {
+  flex: 0 0 56px;
 }
 
 .app-favorite-toolbar-skeleton {
@@ -192,9 +199,6 @@ html:has(.app-frame) body {
     max-width: calc(100% - 72px);
   }
 
-  .app-search-cluster > .kit-search {
-    flex: 0 0 56px;
-  }
 }
 
 .app-frame.is-right-compact .app-main-search.has-search-button .kit-sidebar-right-header {
@@ -202,12 +206,15 @@ html:has(.app-frame) body {
 }
 
 @media (min-width: 1064px) and (max-width: 1279px) {
-  .app-main-search.has-search-button .app-search-cluster,
-  .app-main-search.has-search-button > .app-favorite-toolbar-skeleton {
-    flex: 0 1 auto;
-    width: auto;
+  .app-main-search.has-search-button .app-search-cluster {
+    flex: 0 1 888px;
+    width: 100%;
     max-width: 888px;
     margin-left: max(0px, calc((100% - 888px) / 2));
+  }
+
+  .app-search-cluster > .kit-search {
+    margin-left: auto;
   }
 }
 
@@ -230,17 +237,12 @@ html:has(.app-frame) body {
   opacity: 1;
   transform: none;
   transition:
-    transform 450ms cubic-bezier(0.05, 0.7, 0.1, 1),
-    opacity 210ms linear 50ms;
+    opacity 210ms linear;
 }
 
 .app-main.is-services-open .app-main-motion {
-  transform: translateX(100%);
   opacity: 0;
   pointer-events: none;
-  transition:
-    transform 300ms cubic-bezier(0.3, 0, 0.8, 0.15),
-    opacity 150ms linear 80ms;
 }
 
 .app-main-scroll {
@@ -368,41 +370,6 @@ html:has(.app-frame) body {
   min-width: 1104px;
 }
 
-.app-main-content:has(.app-accounting) {
-  flex: 1 1 auto;
-  min-height: 0;
-}
-
-.app-accounting {
-  display: flex;
-  flex: 1 1 auto;
-  flex-direction: column;
-  gap: 24px;
-  width: 100%;
-  min-height: 0;
-}
-
-.app-accounting .kit-header-block,
-.app-accounting .kit-header {
-  width: 100%;
-}
-
-.app-accounting-cards {
-  display: grid;
-  flex: 1 1 auto;
-  grid-template-columns: minmax(0, 1fr) 336px;
-  gap: 96px;
-  width: 100%;
-  min-height: 0;
-}
-
-.app-accounting-cards > .kit-card-large {
-  height: 100%;
-  min-height: 0;
-  background: var(--tui-background-neutral-1);
-  box-shadow: none;
-}
-
 .app-main-title {
   margin: 0;
   color: var(--tui-text-primary);
@@ -494,10 +461,6 @@ html:has(.app-frame) body {
 }
 
 @media (max-width: 1279px) {
-  .app-frame .app-main:has(.app-main-search.has-search-button) {
-    min-width: 0;
-  }
-
   .app-main-search.has-search-button {
     align-self: stretch;
     box-sizing: border-box;
@@ -506,25 +469,29 @@ html:has(.app-frame) body {
     max-width: none;
   }
 
-  .app-main:has(.app-main-search.has-search-button) .app-main-container,
-  .app-main:has(.app-main-search.has-search-button) .app-services-panel {
-    width: 100%;
-    min-width: 0;
-    max-width: 888px;
-  }
-
-  .app-main:has(.app-main-search.has-search-button) .app-main-content {
-    width: 100%;
-    min-width: 0;
-    max-width: 100%;
-  }
-
   .app-main:has(.app-main-search.has-search-button) .app-favorite-toolbar-skeleton {
     flex: 1 1 auto;
     width: auto;
     min-width: 0;
     max-width: none;
   }
+}
+
+.app-frame .app-main-search > .kit-sidebar-right-header,
+.app-frame .app-main > .is-floating {
+  transition:
+    opacity 210ms linear;
+}
+
+.app-frame .app-search-cluster > .kit-segmented {
+  transition: opacity 210ms linear, visibility 0s;
+}
+
+.app-frame.is-services-open .app-search-cluster > .kit-segmented {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 210ms linear, visibility 0s 210ms;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -543,8 +510,156 @@ html:has(.app-frame) body {
     transition: none;
   }
 
+  .app-frame .app-search-cluster > .kit-segmented,
   .app-frame .kit-sidebar-left,
-  .app-frame .kit-sidebar-right {
+  .app-frame .kit-sidebar-right,
+  .app-frame .app-main-search > .kit-sidebar-right-header,
+  .app-frame .app-main > .is-floating {
     transition: none;
   }
+}
+
+.app-search-cluster.is-button-only {
+  justify-content: flex-end;
+}
+
+
+.app-main-search.has-services-back {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.app-main-search.has-services-back > .kit-search:not(.is-collapsed) {
+  flex: 1 1 auto;
+  min-width: 0;
+  width: auto;
+}
+
+.app-frame .app-main-search > .app-services-back {
+  flex: 0 0 56px;
+  z-index: 2;
+}
+
+.app-main-search.has-search-button > .app-services-back {
+  position: absolute;
+  top: 16px;
+  left: 0;
+}
+
+.app-frame.is-right-compact .app-main-search.has-search-button > .app-services-back {
+  left: max(16px, calc((100% - 1168px) / 2));
+}
+
+@media (min-width: 1064px) and (max-width: 1279px) {
+  .app-main-search.has-search-button > .app-services-back {
+    left: max(0px, calc((100% - 888px) / 2));
+  }
+}
+
+.app-frame.is-wide-content .app-main .app-main-container {
+  max-width: none;
+  margin-left: 0;
+}
+
+.app-frame.is-wide-content .app-main .app-main-search {
+  padding-left: 0;
+}
+
+.app-frame.is-wide-content .app-main-search.has-search-button > .app-services-back {
+  left: 0;
+}
+
+.app-frame.is-wide-content .app-main-search.has-search-button .app-search-cluster {
+  flex: 1 1 auto;
+  width: 100%;
+  max-width: none;
+  margin-left: 0;
+  min-width: 0;
+  justify-content: space-between;
+}
+
+.app-frame.is-wide-content .app-search-balance {
+  display: block;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.app-frame.is-wide-content .app-search-cluster > .kit-segmented {
+  flex: 0 0 auto;
+  max-width: calc(100% - 144px);
+}
+
+.app-frame.is-wide-content .app-search-cluster > .kit-search {
+  margin-left: 0;
+}
+
+.app-frame.is-wide-content .app-main .app-services-panel {
+  box-sizing: border-box;
+  flex: 0 1 1168px;
+  width: 100%;
+  min-width: 0;
+  max-width: 1168px;
+  align-self: flex-start;
+}
+
+@media (max-width: 1279px) {
+  .app-frame.is-wide-content .app-main .app-services-panel {
+    flex-basis: 888px;
+    max-width: 888px;
+  }
+}
+
+.app-frame.is-wide-content .all-services-columns.is-wide {
+  display: grid;
+}
+
+.app-frame.is-wide-content .all-services-columns.is-compact {
+  display: none;
+}
+
+.app-frame.is-right-compact .app-main-search.has-search-button .app-search-cluster {
+  justify-content: flex-start;
+}
+
+.app-frame.is-right-compact .app-search-balance {
+  display: none;
+}
+
+.app-frame.is-right-compact .app-search-cluster > .kit-segmented {
+  max-width: calc(100% - 72px);
+}
+
+.app-frame.is-right-compact .app-search-cluster > .kit-search {
+  margin-left: auto;
+}
+
+.app-frame.is-right-compact .app-main .app-main-scroll {
+  align-items: flex-start;
+}
+
+.app-frame.is-right-compact .app-main .app-main-container:has(.app-main-content) {
+  width: max-content;
+  min-width: 0;
+  max-width: none;
+  margin-left: 0;
+  align-self: flex-start;
+}
+
+.app-frame.is-right-compact .app-main .app-main-content {
+  /* Demo content determines the width of its surrounding panel. */
+  width: 4800px;
+  min-width: 4800px;
+  max-width: none;
+}
+
+@media (min-width: 1280px) and (max-width: 1344px),
+       (min-width: 976px) and (max-width: 1063px) {
+  .app-frame.is-right-compact[data-page='home'] .app-main-search {
+    padding-left: 0;
+  }
+}
+
+.app-frame.is-right-compact[data-page='favorite-1'] .app-main-search {
+  padding-left: 0;
 }

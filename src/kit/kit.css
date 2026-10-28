@@ -984,7 +984,7 @@ button.kit-cell {
   width: 56px;
   height: auto;
   min-height: 0;
-  max-height: calc(100% - 72px);
+  max-height: calc(100% - var(--kit-sidebar-menu-space, 72px));
   z-index: 0;
 }
 
@@ -1046,7 +1046,7 @@ button.kit-cell {
 
 .kit-sidebar-left.is-minimize .kit-sidebar-nav-clip {
   height: calc(100% + 32px);
-  max-height: calc(100svh - 160px);
+  max-height: calc(100svh - 160px + var(--kit-sidebar-footer-reclaimed, 0px));
   margin-bottom: -32px;
   padding-top: 32px;
   flex-shrink: 0;
@@ -1083,7 +1083,7 @@ button.kit-cell {
 .kit-sidebar-left.is-minimize:is(.is-pinned, .is-hold-open):not(.is-skeleton) .kit-sidebar-nav-clip {
   width: 256px;
   height: calc(100% + 16px);
-  max-height: calc(100svh - 176px);
+  max-height: calc(100svh - 176px + var(--kit-sidebar-footer-reclaimed, 0px));
   margin-bottom: -16px;
   padding-top: 8px;
   padding-bottom: 8px;
@@ -1358,7 +1358,11 @@ button.kit-cell {
   display: none;
 }
 
-.kit-sidebar-left:not(.is-minimize).has-nav-scroll-top .kit-sidebar-nav-clip {
+.kit-sidebar-left:is(
+  :not(.is-minimize),
+  :is(:hover, :focus-within):not(.is-hover-locked):not(.is-skeleton),
+  :is(.is-pinned, .is-hold-open):not(.is-skeleton)
+).has-nav-scroll-top .kit-sidebar-nav-clip {
   -webkit-mask-image: linear-gradient(
     to bottom,
     transparent 0,
@@ -1373,7 +1377,11 @@ button.kit-cell {
   );
 }
 
-.kit-sidebar-left:not(.is-minimize).has-nav-scroll-bottom .kit-sidebar-nav-clip {
+.kit-sidebar-left:is(
+  :not(.is-minimize),
+  :is(:hover, :focus-within):not(.is-hover-locked):not(.is-skeleton),
+  :is(.is-pinned, .is-hold-open):not(.is-skeleton)
+).has-nav-scroll-bottom .kit-sidebar-nav-clip {
   -webkit-mask-image: linear-gradient(
     to bottom,
     #000 0,
@@ -1388,7 +1396,11 @@ button.kit-cell {
   );
 }
 
-.kit-sidebar-left:not(.is-minimize).has-nav-scroll-top.has-nav-scroll-bottom
+.kit-sidebar-left:is(
+  :not(.is-minimize),
+  :is(:hover, :focus-within):not(.is-hover-locked):not(.is-skeleton),
+  :is(.is-pinned, .is-hold-open):not(.is-skeleton)
+).has-nav-scroll-top.has-nav-scroll-bottom
   .kit-sidebar-nav-clip {
   -webkit-mask-image: linear-gradient(
     to bottom,
@@ -1468,12 +1480,18 @@ button.kit-cell {
   margin-top: 16px;
 }
 
+.kit-sidebar-left.is-minimize:not(:has(.kit-sidebar-menu-btn)) {
+  --kit-sidebar-menu-space: 0px;
+  --kit-sidebar-footer-reclaimed: 88px;
+  padding-bottom: 0;
+}
+
 .kit-sidebar-left.is-minimize .kit-sidebar-content::after {
   content: '';
   position: absolute;
   z-index: 1;
   right: -16px;
-  bottom: 72px;
+  bottom: var(--kit-sidebar-menu-space, 72px);
   left: -16px;
   height: 16px;
   background: linear-gradient(0deg, #F6F7F8 0%, rgba(246, 247, 248, 0.00) 100%);

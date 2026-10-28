@@ -3,6 +3,7 @@ import bell from '../../public/icons/bell.svg?raw'
 import briefcase from '../../public/icons/briefcase.svg?raw'
 import calendarCheck from '../../public/icons/calendar-check.svg?raw'
 import chat from '../../public/icons/chat.svg?raw'
+import chevronLeft from '../../public/icons/chevron-left.svg?raw'
 import chevronDown from '../../public/icons/chevron-down.svg?raw'
 import coin from '../../public/icons/coin.svg?raw'
 import cross from '../../public/icons/cross.svg?raw'
@@ -27,6 +28,7 @@ const sources: Record<string, string> = {
   'calendar-check': calendarCheck,
   chat,
   'chevron-down': chevronDown,
+  'chevron-left': chevronLeft,
   coin,
   cross,
   doc,

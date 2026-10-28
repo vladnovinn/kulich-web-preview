@@ -24,9 +24,9 @@ export const menuItems: MenuItem[] = [
   { id: 'invoice', icon: 'doc-arrow-up', title: 'Выставление счета', priority: 'medium', group: 'pinned' },
   { id: 'all', icon: 'grid', title: 'Все сервисы', priority: 'always', group: 'pinned', chevron: 'right' },
   { id: 'favorite-1', icon: 'calendar-check', title: 'Бухгалтерия', priority: 'medium', group: 'favorite' },
-  { id: 'favorite-2', icon: 'star', title: 'Избранный сервис 2', priority: 'medium', group: 'favorite' },
-  { id: 'favorite-3', icon: 'star', title: 'Избранный сервис 3', priority: 'medium', group: 'favorite' },
-  { id: 'favorite-4', icon: 'star', title: 'Избранный сервис 4', priority: 'medium', group: 'favorite' },
+  { id: 'favorite-2', icon: 'star', title: 'Широкая таблица', priority: 'medium', group: 'favorite', wideContent: true },
+  { id: 'favorite-3', icon: 'star', title: 'Сегмент без бейджей', priority: 'medium', group: 'favorite' },
+  { id: 'favorite-4', icon: 'star', title: 'Сервис без второго уровня', priority: 'medium', group: 'favorite' },
 ]
 
 export function getMenuItem(id: string): MenuItem | undefined {

@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { IconSvg } from '../icons/inline'
 import { AllServices } from '../kit/AllServices'
-import { Badge, Button, CardLarge, Header, SearchBackdrop, SearchInput, Segmented, SidebarLeft, SidebarRight, SidebarRightChat, SidebarRightToolbar, headerButtonSize } from '../kit/components'
+import { Badge, Button, Header, SearchBackdrop, SearchInput, Segmented, SidebarLeft, SidebarRight, SidebarRightChat, SidebarRightToolbar, headerButtonSize } from '../kit/components'
 import { AppNav, useAppNav } from './AppNav'
 import { MENU_BOOTSTRAP_DELAY_MS, MENU_SPLASH_DELAY_MS, getMenuItem } from './menu'
 import './app.css'
@@ -13,7 +13,6 @@ const MINIMIZED_SIDEBAR = 88
 const COLLAPSE_LEFT = `(max-width: ${LEFT_SIDEBAR_MIN + CONTENT_COLUMN_WIDTH + MINIMIZED_SIDEBAR - 1}px)`
 const COLLAPSE_RIGHT = `(max-width: ${CONTENT_COLUMN_WIDTH + RIGHT_SIDEBAR_MIN * 2 - 1}px)`
 const COMPACT_RIGHT = '(max-width: 1063px), (min-width: 1280px) and (max-width: 1344px)'
-const SEGMENT_OVERFLOW = '(max-width: 1344px)'
 const CONTENT_BLOCKS = 12
 const pageHeaderIds = new Set([
   'home',
@@ -43,22 +42,10 @@ const accountingViews: Record<string, { title: string; subtitle?: string }> = {
   settings: { title: 'Настройки', subtitle: 'Параметры учёта' },
   tariffs: { title: 'Тарифы', subtitle: 'Подписка на бухгалтерию' },
 }
-const favoriteSearchSegments = [
-  { value: 'all', label: 'Все' },
-  { value: 'incoming', label: 'Входящие', badge: <Badge size="m">99+</Badge> },
-  { value: 'drafts', label: 'Черновики', badge: <Badge size="m">Новое</Badge> },
-  { value: 'archive', label: 'Архив' },
-  {
-    value: 'more',
-    label: 'Еще',
-    menu: [
-      { value: 'outgoing', label: 'Исходящие' },
-      { value: 'today', label: 'Сегодня' },
-      { value: 'week', label: 'Неделя' },
-      { value: 'month', label: 'Месяц' },
-    ],
-  },
-]
+const favoriteSearchSegments = Array.from({ length: 10 }, (_, index) => ({
+  value: `item-${index + 1}`,
+  label: `Пункт меню ${index + 1}`,
+}))
 
 function useMediaQuery(query: string) {
   const [matches, setMatches] = useState(
@@ -79,11 +66,21 @@ function AppLoader() {
   return <IconSvg name="loader" className="app-loader" />
 }
 
+function ContentCards({ tall = true }: { tall?: boolean }) {
+  return (
+    <>
+      {Array.from({ length: CONTENT_BLOCKS }, (_, index) => (
+        <div key={index} className={`app-main-block${tall ? ' is-tall' : ''}`} />
+      ))}
+    </>
+  )
+}
+
 function AccountingContent({ segment }: { segment: string }) {
   const view = accountingViews[segment] ?? accountingViews.home
 
   return (
-    <div className="app-accounting">
+    <>
       <Header
         size="h3"
         title={view.title}
@@ -94,11 +91,8 @@ function AccountingContent({ segment }: { segment: string }) {
           </Button>
         }
       />
-      <div className="app-accounting-cards">
-        <CardLarge>{null}</CardLarge>
-        <CardLarge>{null}</CardLarge>
-      </div>
-    </div>
+      <ContentCards />
+    </>
   )
 }
 
@@ -107,7 +101,6 @@ export function AppPage() {
   const collapseLeft = useMediaQuery(COLLAPSE_LEFT)
   const collapseRight = useMediaQuery(COLLAPSE_RIGHT)
   const compactRight = useMediaQuery(COMPACT_RIGHT)
-  const segmentOverflow = useMediaQuery(SEGMENT_OVERFLOW)
   const nav = useAppNav()
   const [servicesPhase, setServicesPhase] = useState<'closed' | 'open' | 'closing'>('closed')
   const servicesPanelRef = useRef<HTMLDivElement>(null)
@@ -120,7 +113,6 @@ export function AppPage() {
     }
     if (servicesOpenRef.current) {
       setServicesPhase('closing')
-      return
     }
     nav.onSelect(id)
   }
@@ -129,7 +121,8 @@ export function AppPage() {
   const [loadedRoute, setLoadedRoute] = useState(routeKey)
   const loadedItem = getMenuItem(loadedRoute)
   const title = item?.title ?? ''
-  const collapsedSearch = item?.group === 'favorite'
+  const collapsedSearch = routeKey !== 'home'
+  const hasSearchSegments = item?.group === 'favorite' && item.id !== 'favorite-4'
   const [accountingSegment, setAccountingSegment] = useState('home')
   const [readySearchRoute, setReadySearchRoute] = useState<string | null>(routeKey)
   const toolbarRouteRef = useRef(routeKey)
@@ -139,23 +132,14 @@ export function AppPage() {
     if (accountingSegment !== 'home') setAccountingSegment('home')
   }
   const ready = phase === 'ready'
-  const favoriteToolbarReady = collapsedSearch && readySearchRoute === routeKey
-  const wideSearchReady = !collapsedSearch && readySearchRoute === routeKey
+  const searchReady = readySearchRoute === routeKey
   const contentReady = loadedRoute === routeKey
   const showContentLoader = phase === 'skeleton' || (ready && !contentReady)
   const targetIsWide = Boolean(item?.wideContent)
   const loadedIsWide = Boolean(loadedItem?.wideContent)
   const isWideLayout = showContentLoader ? loadedIsWide : targetIsWide
-  const minimizeLeft = showContentLoader
-    ? targetIsWide
-      ? false
-      : collapseLeft || loadedIsWide
-    : collapseLeft || targetIsWide
-  const minimizeRight = showContentLoader
-    ? targetIsWide
-      ? false
-      : collapseRight || loadedIsWide
-    : collapseRight || targetIsWide
+  const minimizeLeft = collapseLeft || isWideLayout
+  const minimizeRight = collapseRight || isWideLayout
   const phaseRef = useRef(phase)
   phaseRef.current = phase
 
@@ -196,14 +180,17 @@ export function AppPage() {
 
   useEffect(() => {
     if (servicesPhase !== 'open') return
-    const onPointerDown = (event: PointerEvent) => {
+    const onOutsideClick = (event: MouseEvent) => {
       const target = event.target
       if (!(target instanceof Node)) return
       if (servicesPanelRef.current?.contains(target)) return
+      if (target instanceof Element && target.closest('[data-sidebar-menu-item]')) return
+      event.preventDefault()
+      event.stopPropagation()
       setServicesPhase('closing')
     }
-    document.addEventListener('pointerdown', onPointerDown)
-    return () => document.removeEventListener('pointerdown', onPointerDown)
+    document.addEventListener('click', onOutsideClick, true)
+    return () => document.removeEventListener('click', onOutsideClick, true)
   }, [servicesPhase])
 
   if (phase === 'splash') {
@@ -216,19 +203,33 @@ export function AppPage() {
 
   return (
     <div
-      className={`app-frame${isWideLayout ? ' is-wide-content' : ''}${compactRight ? ' is-right-compact' : ''}`}
+      className={`app-frame${isWideLayout ? ' is-wide-content' : ''}${compactRight ? ' is-right-compact' : ''}${servicesPhase === 'open' ? ' is-services-open' : ''}`}
+      data-page={routeKey}
       aria-busy={showContentLoader || undefined}
     >
       <SidebarLeft minimize={minimizeLeft} skeleton={!ready}>
         <AppNav active={nav.active} onSelect={onSelect} servicesOpen={servicesPhase === 'open'} />
       </SidebarLeft>
       <main className={`app-main${servicesPhase === 'open' ? ' is-services-open' : ''}`}>
-        <div className={`app-main-search${collapsedSearch ? ' has-search-button' : ''}`}>
-          {collapsedSearch && !favoriteToolbarReady ? (
-            <div className="kit-skeleton app-favorite-toolbar-skeleton" role="status" aria-label="Загрузка" />
+        <div className={`app-main-search${searchReady && collapsedSearch ? ' has-search-button' : ''}${servicesPhase === 'open' ? ' has-services-back' : ''}`}>
+          {servicesPhase === 'open' ? (
+            <div className="kit-search is-collapsed app-services-back">
+              <Button
+                appearance="floating"
+                className="kit-search-button"
+                aria-label="Закрыть все сервисы"
+                onClick={() => setServicesPhase('closing')}
+              >
+                <IconSvg name="chevron-left" className="kit-search-icon" />
+              </Button>
+            </div>
+          ) : null}
+          {!searchReady ? (
+            <div className="kit-skeleton app-wide-search-skeleton" role="status" aria-label="Загрузка" />
           ) : collapsedSearch ? (
-            <div className="app-search-cluster">
+            <div className={`app-search-cluster${hasSearchSegments ? '' : ' is-button-only'}`}>
               <SearchBackdrop />
+              {hasSearchSegments ? <>
               <div className="app-search-balance" aria-hidden="true">
                 <SearchInput collapsed />
               </div>
@@ -238,14 +239,13 @@ export function AppPage() {
                 size="l"
                 value={item?.id === 'favorite-1' ? accountingSegment : undefined}
                 onChange={item?.id === 'favorite-1' ? setAccountingSegment : undefined}
-                collapseOverflow={segmentOverflow}
+                collapseOverflow
               />
+              </> : null}
               <SearchInput collapsed />
             </div>
-          ) : wideSearchReady ? (
-            <SearchInput />
           ) : (
-            <div className="kit-skeleton app-wide-search-skeleton" role="status" aria-label="Загрузка" />
+            <SearchInput />
           )}
           {compactRight ? <SidebarRightToolbar skeleton={!ready} dismissSignal={routeKey} /> : null}
         </div>
@@ -268,16 +268,7 @@ export function AppPage() {
                         ) : title ? (
                           <h1 className="app-main-title">{title}</h1>
                         ) : null}
-                        {targetIsWide ? (
-                          <div className="app-main-table" />
-                        ) : (
-                          Array.from({ length: CONTENT_BLOCKS }, (_, index) => (
-                            <div
-                              key={index}
-                              className={`app-main-block${pageHeaderIds.has(item?.id ?? '') ? ' is-tall' : ''}`}
-                            />
-                          ))
-                        )}
+                        <ContentCards tall={pageHeaderIds.has(item?.id ?? '')} />
                       </>
                     )}
                   </div>

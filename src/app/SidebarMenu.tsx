@@ -16,6 +16,7 @@ export function SidebarMenu({ items, active, onSelect, servicesOpen = false }: S
   const renderItem = (item: MenuItem) => (
     <span
       key={item.id}
+      data-sidebar-menu-item={item.id}
       onPointerDown={(event) => {
         if (item.id === 'all' || servicesOpen) event.stopPropagation()
       }}
@@ -27,7 +28,7 @@ export function SidebarMenu({ items, active, onSelect, servicesOpen = false }: S
         chevron={item.chevron}
         onClick={() => {
           onSelect(item.id)
-          sidebar?.collapseFlyout()
+          sidebar?.collapseFlyout(item.id === 'all')
         }}
       />
     </span>
