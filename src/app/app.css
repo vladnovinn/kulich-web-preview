@@ -634,11 +634,11 @@ html:has(.app-frame) body {
   margin-left: auto;
 }
 
-.app-frame.is-right-compact .app-main .app-main-scroll {
+.app-frame.is-right-compact .app-main-scroll {
   align-items: flex-start;
 }
 
-.app-frame.is-right-compact .app-main .app-main-container:has(.app-main-content) {
+.app-frame.is-right-compact[data-page='favorite-2'] .app-main .app-main-container:has(.app-main-content) {
   width: max-content;
   min-width: 0;
   max-width: none;
@@ -646,7 +646,7 @@ html:has(.app-frame) body {
   align-self: flex-start;
 }
 
-.app-frame.is-right-compact .app-main .app-main-content {
+.app-frame.is-right-compact[data-page='favorite-2'] .app-main .app-main-content {
   /* Demo content determines the width of its surrounding panel. */
   width: 4800px;
   min-width: 4800px;
