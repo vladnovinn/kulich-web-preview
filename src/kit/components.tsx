@@ -769,6 +769,38 @@ type SearchInputProps = {
   collapsed?: boolean
 }
 
+const searchSuggestions = [
+  'Реквизиты',
+  'Кредиты',
+  'Выписки',
+  'Лимиты',
+  'Помощь',
+  'Лента операций',
+  'Тарифы',
+  'Выставить счет',
+  'Создать платеж',
+]
+
+function SearchSuggestions() {
+  const [step, setStep] = useState(0)
+  const index = step % searchSuggestions.length
+  const previousIndex = (index + searchSuggestions.length - 1) % searchSuggestions.length
+
+  useEffect(() => {
+    const timer = window.setTimeout(() => setStep(step + 1), step === 0 ? 3000 : 5000)
+    return () => window.clearTimeout(timer)
+  }, [step])
+
+  return (
+    <span className="kit-search-suggestions" aria-hidden="true">
+      <span key={step} className={step === 0 ? undefined : 'kit-search-suggestions-slide'}>
+        {step > 0 && <span>{searchSuggestions[previousIndex]}</span>}
+        <span>{searchSuggestions[index]}</span>
+      </span>
+    </span>
+  )
+}
+
 export function SearchBackdrop() {
   return (
     <div className="kit-search-bg" aria-hidden>
@@ -827,6 +859,7 @@ export function SearchInput({
                 onChange={(event) => onChange?.(event.target.value)}
               />
             )}
+            <SearchSuggestions />
           </label>
         </>
       )}
